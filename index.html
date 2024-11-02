@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>قصص رعب (رعب بلا حدود)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            text-align: center;
+            margin: 40px; /* الهوامش حول الصفحة */
+        }
+        header {
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ff3e3e;
+        }
+        .sponsors {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .sponsor {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #ffffff;
+        }
+        .sponsor img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            cursor: pointer; /* يجعل المؤشر كأنه زر عند المرور */
+        }
+        .sponsor span {
+            cursor: pointer; /* يجعل المؤشر كأنه زر عند المرور */
+        }
+        .contact-info {
+            margin-top: 30px;
+        }
+        .contact-info a {
+            color: #ff3e3e;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .contact-info a:hover {
+            color: #ffffff;
+        }
+        /* زر التحكم بالصوت */
+        .sound-control {
+            position: absolute;
+            top: 10px; /* وضع الزر في الأعلى */
+            left: 10px; /* محاذاة إلى اليسار */
+            background-color: transparent;
+            color: #ff3e3e;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body onload="startSound()">
+
+<!-- زر التحكم بالصوت (رمز) -->
+<button class="sound-control" onclick="toggleSound()" id="soundButton">▶️</button>
+
+<header>
+    <h1>قصص رعب<br>(رعب بلا حدود)</h1>
+    <p>منصة لقراءة القصص العربية بدون إنترنت</p>
+</header>
+
+<section class="sponsors">
+    <a href="mahmoud.html" class="sponsor">
+        <img src="mahmoud.jpg" alt="محمود الشافعي">
+        <span>محمود الشافعي</span>
+    </a>
+    <a href="islam.html" class="sponsor">
+        <img src="islam.jpg" alt="إسلام القحطاني">
+        <span>إسلام القحطاني</span>
+    </a>
+</section>
+
+<div class="contact-info">
+    <h3>تواصل معنا</h3>
+    <a href="https://www.facebook.com/profile.php?id=61562371709328&mibextid=ZbWKwL" target="_blank">محمود الشافعي</a>
+    <span>|</span>
+    <a href="https://www.facebook.com/profile.php?id=61559653061070&mibextid=ZbWKwL" target="_blank">إسلام القحطاني</a>
+
+    <br><hr>
+    <a href="tel:+201155647387">هاتف : محمود الشافعي</a>
+    <span>|</span>
+    <a href="tel:+201012036857">هاتف : إسلام القحطاني</a>
+</div>
+
+<!-- إضافة ملف الصوت -->
+<audio id="scarySound" loop>
+    <source src="scary-sound.mp3" type="audio/mpeg">
+    متصفحك لا يدعم تشغيل الصوت.
+</audio>
+
+<script>
+    // دالة لبدء تشغيل الصوت عند تحميل الصفحة
+    function startSound() {
+        const sound = document.getElementById("scarySound");
+        sound.play(); // بدء التشغيل
+    }
+
+    // دالة التحكم بالصوت
+    let isPlaying = true; // يبدأ الصوت في وضع التشغيل
+    const sound = document.getElementById("scarySound");
+    const soundButton = document.getElementById("soundButton");
+
+    function toggleSound() {
+        if (isPlaying) {
+            sound.pause();
+            soundButton.textContent = "▶️"; // رمز التشغيل
+        } else {
+            sound.play();
+            soundButton.textContent = "⏸️"; // رمز الإيقاف
+        }
+        isPlaying = !isPlaying;
+    }
+</script>
+
+</body>
+</html>

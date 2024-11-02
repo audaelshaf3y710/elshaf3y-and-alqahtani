@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>قصص رعب - الصفحة الثانية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            text-align: center;
+            margin: 40px;
+            overflow-y: auto; /* إظهار شريط التمرير العمودي إذا كان المحتوى زائد */
+            height: calc(100vh - 80px); /* جعل ارتفاع الصفحة يتناسب مع الشاشة */
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ff3e3e;
+        }
+        .sponsors {
+            display: flex;
+            flex-wrap: wrap; /* يسمح بتغليف العناصر عند الحاجة */
+            justify-content: center; /* محاذاة العناصر إلى المركز */
+            margin: 20px 0; /* مسافة من الأعلى والأسفل */
+        }
+        .sponsor {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #ffffff;
+            margin: 10px; /* مسافة بين الأزرار */
+            cursor: pointer; /* يجعل المؤشر كأنه زر عند المرور */
+        }
+        .sponsor img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+        /* زر التحكم بالصوت و زر العودة */
+        .controls {
+            position: absolute;
+            top: 10px; /* وضع الأزرار في الأعلى */
+            left: 10px; /* محاذاة إلى اليسار */
+            display: flex; /* استخدام flexbox لوضع الأزرار بجانب بعض */
+            gap: 10px; /* مسافة بين الأزرار */
+        }
+        button {
+            background-color: transparent;
+            color: #ff3e3e;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body onload="startSound()">
+
+<!-- أزرار التحكم -->
+<div class="controls">
+    <!-- زر العودة للصفحة الأولى -->
+    <button class="back-button" onclick="goBack()">⬅️</button>
+    <!-- زر التحكم بالصوت (رمز) -->
+    <button class="sound-control" onclick="toggleSound()" id="soundButton">▶️</button>
+</div>
+
+<header>
+    <h1>قصص رعب - اسلالم القحطاني</h1>
+</header>
+
+<section class="sponsors">
+    <a href="story01.html" class="sponsor">
+        <img src="story01.jpeg" alt="">
+        <span>قصة : خاتم الجن</span>
+    </a>
+    <a href="story02.html" class="sponsor">
+        <img src="story02.jpeg" alt="">
+        <span>قصة : لعنة العهود</span>
+    </a>
+    <a href="story03.html" class="sponsor">
+        <img src="story03.jpg" alt="">
+        <span>قصة : شقة مسكونة</span>
+    </a>
+    <a href="story04.html" class="sponsor">
+        <img src="story04.jpg" alt="">
+        <span>قصة : الجن العاشق</span>
+    </a>
+    <a href="story05.html" class="sponsor">
+        <img src="story05.jpg" alt="">
+        <span>قصة : لعنة روح ابن العطار</span>
+    </a>
+    <a href="story06.html" class="sponsor">
+        <img src="story06.jpg" alt="">
+        <span>قصة : منزل المزرعة الملعونة</span>
+    </a>
+    <a href="story07.html" class="sponsor">
+        <img src="story07.jpg" alt="">
+        <span>قصة : الظلام الابدي</span>
+    </a>
+    <a href="story08.html" class="sponsor">
+        <img src="story08.jpg" alt="">
+        <span>قصة : انتقام قرين</span>
+    </a>
+    <a href="story09.html" class="sponsor">
+        <img src="story09.jpg" alt="">
+        <span>قصة : اياك ان تغضبها</span>
+    </a>
+    <a href="story010.html" class="sponsor">
+        <img src="story010.jpg" alt="">
+        <span>قصة : تجارب حقيقية</span>
+    </a>
+    <a href="story011.html" class="sponsor">
+        <img src="story011.jpg" alt="">
+        <span>قصة : فايروس الموت</span>
+    </a>
+</section>
+
+<!-- إضافة ملف الصوت -->
+<audio id="scarySound" loop>
+    <source src="scary-sound.mp3" type="audio/mpeg">
+    متصفحك لا يدعم تشغيل الصوت.
+</audio>
+
+<script>
+    // دالة لبدء تشغيل الصوت عند تحميل الصفحة
+    function startSound() {
+        const sound = document.getElementById("scarySound");
+        sound.play(); // بدء التشغيل
+    }
+
+    // دالة للتحكم بالصوت
+    let isPlaying = true; // يبدأ الصوت في وضع التشغيل
+    const soundButton = document.getElementById("soundButton");
+
+    function toggleSound() {
+        const sound = document.getElementById("scarySound");
+        if (isPlaying) {
+            sound.pause();
+            soundButton.textContent = "▶️"; // رمز التشغيل
+        } else {
+            sound.play();
+            soundButton.textContent = "⏸️"; // رمز الإيقاف
+        }
+        isPlaying = !isPlaying;
+    }
+
+    // دالة للعودة إلى الصفحة الأولى
+    function goBack() {
+        window.location.href = "index.html"; // تأكد من تغيير "index.html" إلى اسم الصفحة الرئيسية لديك
+    }
+</script>
+
+</body>
+</html>
